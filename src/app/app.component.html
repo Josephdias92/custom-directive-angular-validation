@@ -1,0 +1,13 @@
+<h1>hello world</h1>
+
+<form [formGroup]="form">
+  <div formArrayName="remaining" *ngFor="let item of form.get('remaining').value; let i = index;">
+    <div [formGroupName]="i">
+      <input formControlName="num1" [remaining-count]="remainingData[i]"/>
+      <input formControlName="num2" [remaining-count]="remainingData[i]"/>
+      <input formControlName="num3" [remaining-count]="remainingData[i]"/>
+      <span [show-remaining]="item" [remaining-count]="remainingData[i]"></span>
+    </div>
+  </div>
+  <button (click)="addMoreNumbers()" [disabled]="form.invalid">Add more numbers</button>
+</form>
