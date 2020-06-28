@@ -1,0 +1,17 @@
+<form [formGroup]="form">
+  <div formArrayName="remaining">
+    <div *ngFor="let item of remaining.controls; index as i">
+      <div [formGroupName]="i" [remaining-count]="remainingData[i]">
+        <input formControlName="num1" />
+        <input formControlName="num2" />
+        <input formControlName="num3" />
+        <span [show-remaining]="item.value" [remaining-count]="remainingData[i]"></span>
+        {{item.value | json}}
+      </div>
+    </div>
+  </div>
+  <button (click)="addMoreNumbers()" [disabled]="form.invalid">Add more numbers</button>
+  <pre>
+    {{form.errors | json}}
+  </pre>
+</form>

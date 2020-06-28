@@ -1,0 +1,14 @@
+<form [formGroup] = "form">
+  <label for="">
+    type:
+    <input type="text" formControlName="controlLength">
+    <span *ngIf="form.get('controlLength').invalid">invalid length</span>
+  </label>
+  <label for="">Select length
+    <select formControlName="selectMe">
+      <option *ngFor="let item of list" [value]="item">{{item}}</option>
+    </select>
+  </label>
+</form>
+
+{{form.errors | json}}
